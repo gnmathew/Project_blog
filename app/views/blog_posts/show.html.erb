@@ -1,6 +1,8 @@
 <h2>Blog Post<%= @blog_post.id %></h2>
 <table>
   <thead>
+  <%= link_to 'Home', blog_posts_path %>
+  <%= link_to 'Back', :back %>
   <tr>
     <th>Title</th>
     <th>Content</th>

@@ -1,2 +1,10 @@
 <h3>Edit</h3>
+<% if @blog_post.errors.any? %>
+  <ul>
+    <% @blog_post.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= render partial: 'form', locals: {feedback: @feedback, url: blog_post_feedback_path, method: :patch} %>
+<%= link_to 'Back', :back %>

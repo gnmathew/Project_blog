@@ -5,6 +5,8 @@
   <%= link_to 'Sign in', new_user_session_path %>
 <% end %>
 <h2>Feedback in: <%= @blog_post.id %></h2>
+<%= link_to 'Home', blog_posts_path %>
+<%= link_to 'Back', :back %>
 <table>
   <thead>
   <tr>

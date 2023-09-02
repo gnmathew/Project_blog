@@ -1,2 +1,10 @@
 <h3>New</h3>
+<% if @blog_post.errors.any? %>
+  <ul>
+    <% @blog_post.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= render partial: 'form', locals: {feedback: @feedback, url: blog_post_feedbacks_path, method: :post} %>
+<%= link_to 'Back', :back %>
