@@ -1,0 +1,9 @@
+<h3>New</h3>
+<% if @blog_post.errors.any? %>
+  <ul>
+    <% @blog_post.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= render partial: 'form', locals: {blog_post: @blog_post, url: blog_posts_path, method: :post} %>
