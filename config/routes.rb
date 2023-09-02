@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root "blog_posts#index"
 
-  resources :blog_posts
+  resources :blog_posts do
+    resources :feedbacks, except: :show
+  end
 end

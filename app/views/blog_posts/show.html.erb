@@ -6,6 +6,7 @@
     <th>Content</th>
     <th>Name</th>
     <th>Email</th>
+    <th>Feedback</th>
     <th>Button</th>
   </tr>
   </thead>
@@ -15,8 +16,14 @@
       <td><%= @blog_post.content %></td>
       <td><%= @blog_post.user.name %></td>
       <td><%= @blog_post.user.email %></td>
-      <td><%= link_to 'Edit', edit_blog_post_path if user_signed_in? && @blog_post.user == current_user %></td>
-      <td><% button_to 'Delete', blog_post_path, method: :delete  if user_signed_in? && @blog_post.user == current_user %></td>
+      <td>
+        <%= link_to 'New', new_blog_post_feedback_path(@blog_post) if user_signed_in? %>
+        <%= link_to 'Feedbacks', blog_post_feedbacks_path(@blog_post) if @blog_post.feedbacks.present?%>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_blog_post_path if user_signed_in? && @blog_post.user == current_user %>
+        <% button_to 'Delete', blog_post_path, method: :delete  if user_signed_in? && @blog_post.user == current_user %>
+      </td>
     </tr>
   </tbody>
 </table>

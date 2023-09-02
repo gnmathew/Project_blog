@@ -1,0 +1,5 @@
+<%= form_with(model: feedback, url: url, method: method, data: {turbo: false}) do |form| %>
+  <%= form.label :comment %>
+  <%= form.text_field :comment %>
+  <%= form.submit %>
+<% end %>

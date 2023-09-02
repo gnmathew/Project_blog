@@ -23,8 +23,10 @@
       <td><%= blog_post.content %></td>
       <td><%= blog_post.user.name %></td>
       <td><%= blog_post.user.email %></td>
-      <td><%= link_to 'Show', blog_post_path(blog_post) %></td>
-      <td><%= button_to 'Delete', blog_post_path(blog_post), method: :delete if user_signed_in? && blog_post.user == current_user %></td>
+      <td>
+        <%= link_to 'Show', blog_post_path(blog_post) %>
+        <%= button_to 'Delete', blog_post_path(blog_post), method: :delete if user_signed_in? && blog_post.user == current_user %>
+      </td>
     </tr>
   <% end %>
   </tbody>

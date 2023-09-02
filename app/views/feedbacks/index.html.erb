@@ -1,0 +1,28 @@
+<% if user_signed_in? %>
+  <h2> Hello <%= current_user.email %> </h2>
+  <%= link_to 'Sign out', destroy_user_session_path, data: { 'turbo-method': :delete } %>
+<% else %>
+  <%= link_to 'Sign in', new_user_session_path %>
+<% end %>
+<h2>Feedback in: <%= @blog_post.id %></h2>
+<table>
+  <thead>
+  <tr>
+    <th>Comment</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Button</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @feedbacks.each do |feedback| %>
+    <tr>
+      <td><%= feedback.comment %></td>
+      <td><%= feedback.user.name %></td>
+      <td><%= feedback.user.email %></td>
+      <td><%= link_to 'Edit', edit_blog_post_feedback_path(@blog_post, feedback) if user_signed_in? && feedback.user == current_user %></td>
+      <td><%= button_to 'Delete', blog_post_feedback_path(@blog_post, feedback), method: :delete if user_signed_in? && feedback.user == current_user %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
